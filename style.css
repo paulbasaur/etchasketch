@@ -1,13 +1,42 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 .row {
   display: flex;
 }
 
-.square {
-  height: 25px;
-  width: 25px;
-  min-width: 25px;
-}
-
 .active {
   background-color: black;
+}
+
+.square {
+}
+
+#grid {
+  width: 960px;
+  height: 960px;
+  border: 1px solid black;
+}
+
+#header-container, #footer-container {
+  background-color: blue;
+  height: 50px;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#left-column {
+  border: 1px solid red;
+  background-color: lavender;
+}
+
+#right-column {
+  border: 1px solid red;
+  background-color: red;
 }
