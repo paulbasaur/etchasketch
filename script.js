@@ -13,36 +13,18 @@ function makeSquare(row, column, dim) {
   const container = document.querySelector(rowId);
   const square = document.createElement('div');
   square.classList.add("square");
-  const pixelSize = Math.floor(960/dim) + "px";
-  square.style.height = pixelSize;
-  square.style.width = pixelSize;
-  square.style.minWidth = pixelSize;
   const idName = "square-" + row + "-" + column;
   square.setAttribute("id", idName);
   container.appendChild(square);
 }
 
-// Get grid size from user and resize input
-// to a factor of 960 (if necessary).
+
 function getGridSize(){
-  const gridSizeInput = Number(prompt("Please enter grid size (<100)"));
-  if (gridSizeInput > 96) {
-    return 96;
-  }
-
-  const pixelFactor = 960 % gridSizeInput;
-  if (pixelFactor == 0) {
+  const gridSizeInput = Number(prompt("Please enter grid size (up to 100)"));
+  if (gridSizeInput > 100) {
+    return 100;
+  } else {
     return gridSizeInput;
-  }
-
-  let i = 0;
-  while (true){
-    i += 1;
-    if ((960 % (gridSizeInput + i)) == 0) {
-      return (gridSizeInput + i);
-    } else if ((960 % (gridSizeInput - i)) == 0) {
-      return (gridSizeInput - i);
-    }
   }
 }
 
@@ -59,7 +41,7 @@ function buildGrid(size) {
 
 function resetGrid(){
   squares.forEach((square) => {
-    square.style.backgroundColor = "white";
+    square.style.backgroundColor = "rgb(255, 255, 255)";
   });
 }
 
@@ -69,13 +51,24 @@ function changeGridSize() {
 }
 
 
+function changeShade(currentColor) {
+  if (currentColor === null) {
+    return("rgb(225, 225, 225)")
+  } else {
+    let currentRGB = parseInt(currentColor.substring(22, 25));
+    let newRGB = currentRGB - 25;
+    return(`rgb(${newRGB}, ${newRGB}, ${newRGB}`)
+  }
+}
+
+
 let gridSize = getGridSize();
-console.log(gridSize);
 buildGrid(gridSize);
 const squares = document.querySelectorAll(".square");
 
 squares.forEach((square) => {
   square.addEventListener('mouseover', () => {
-    square.style.backgroundColor = "black";
+    let newColor = changeShade(square.getAttribute("style"));
+    square.style.backgroundColor = newColor;
   });
 });
