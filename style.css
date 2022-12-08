@@ -17,9 +17,9 @@ body {
 }
 
 #grid {
-  width: 960px;
-  height: 960px;
-  min-width: 960px;
+  width: 750px;
+  height: 750px;
+  min-width: 750px;
   margin-right: 25px;
   display:flex;
   flex-direction: column;
