@@ -57,7 +57,27 @@ function changeShade(currentColor) {
   } else {
     let currentRGB = parseInt(currentColor.substring(22, 25));
     let newRGB = currentRGB - 25;
-    return(`rgb(${newRGB}, ${newRGB}, ${newRGB}`)
+    return(`rgb(${newRGB}, ${newRGB}, ${newRGB}`);
+  }
+}
+
+function randomColor(currentColor) {
+  const whiteBgStr= "background-color: rgb(255, 255, 255);";
+  if (currentColor === null || currentColor === whiteBgStr) {
+    let randR = Math.floor(Math.random() * 256);
+    let randG = Math.floor(Math.random() * 256);
+    let randB = Math.floor(Math.random() * 256);
+    return(`rgb(${randR}, ${randG}, ${randB}`);
+  }
+}
+
+function checkToggleStatus() {
+  const switchStatus = document.querySelector("#colorToggle").checked;
+
+  if (switchStatus) {
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -68,7 +88,12 @@ const squares = document.querySelectorAll(".square");
 
 squares.forEach((square) => {
   square.addEventListener('mouseover', () => {
-    let newColor = changeShade(square.getAttribute("style"));
+    let newColor = "";
+    if (checkToggleStatus()) {
+      newColor = randomColor(square.getAttribute("style"));
+    } else {
+      newColor = changeShade(square.getAttribute("style"));
+    }
     square.style.backgroundColor = newColor;
   });
 });

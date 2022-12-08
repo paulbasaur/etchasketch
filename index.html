@@ -16,14 +16,23 @@
     <div id="main-container">
       <div id="left-column">
         <div id="title">
-          <p>
             Etch-a-sketch
-          </p>
         </div>
         <div id="button-container">
           <button class="side-button" onclick="resetGrid()">Erase</button>
           <button class="side-button" onclick="changeGridSize()">Change Size</button>
+          <div id="toggle-container">
+            <span class="toggle-text">grayscale</span>
+            <label class="switch">
+              <input type="checkbox" id="colorToggle" onchange="resetGrid()">
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-text">random color</span>
+          </div>
+
         </div>
+
+
       </div>
 
       <div id="grid">
