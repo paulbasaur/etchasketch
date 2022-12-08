@@ -19,6 +19,7 @@ body {
 #grid {
   width: 960px;
   height: 960px;
+  min-width: 960px;
   margin-right: 25px;
   display:flex;
   flex-direction: column;
